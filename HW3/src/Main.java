@@ -42,12 +42,16 @@ public class Main {
         System.out.println(" ");
 
 
-        //**************************NEED TO BE FINISHED
+
             //THIS IS THE MERGE SORT OF THE 20 ELEMENTS ARRAY
+        SortClass mergeArray20 = new SortClass(Array20, 20);
+        mergeArray20.mergeSortandTimer();
         System.out.println(" ");
         System.out.println(" ");
             //THIS IS THE QUICK SORT OF THE 20 ELEMENTS ARRAY
         //**************************
+        SortClass quickArray20 = new SortClass(Array20, 20);
+        quickArray20.quickSortandTimer();
 
         System.out.println(" ");
         System.out.println("--------------------100 ELEMENTS----------------------");
@@ -65,12 +69,16 @@ public class Main {
         System.out.println(" ");
 
 
-        //**************************NEED TO BE FINISHED
+
         //THIS IS THE MERGE SORT OF THE 100 ELEMENTS ARRAY
+        SortClass mergeArray100 = new SortClass(Array100,100);
+        mergeArray100.mergeSortandTimer();
         System.out.println(" ");
         System.out.println(" ");
         //THIS IS THE QUICK SORT OF THE 100 ELEMENTS ARRAY
-        //**************************
+        SortClass quickArray100 = new SortClass(Array100, 100);
+        quickArray100.quickSortandTimer();
+
 
 
 
@@ -91,35 +99,39 @@ public class Main {
 
 
 
-        //**************************NEED TO BE FINISHED
+
         //THIS IS THE MERGE SORT OF THE 200 ELEMENTS ARRAY
+        SortClass mergeArray200 = new SortClass(Array200,200);
+        mergeArray200.mergeSortandTimer();
         System.out.println(" ");
         System.out.println(" ");
         //THIS IS THE QUICK SORT OF THE 200 ELEMENTS ARRAY
-        //**************************
-
+       SortClass quickArray200 = new SortClass(Array200,200);
+        quickArray200.quickSortandTimer();
+        System.out.println(" ");
+        System.out.println("****************** ");
 
         //COMPARISON TIME
         System.out.println("Times of the Sorting Methods");
         System.out.println("*** 20 Element sorting times***");
         System.out.println("Insertion Sort "+insertionArray20.time);
         System.out.println("Selection Sort "+selectionArray20.time);
-        System.out.println("Merge Sort ");
-        System.out.println("Quick Sort ");
+        System.out.println("Merge Sort "+mergeArray20.time);
+        System.out.println("Quick Sort "+quickArray20.time);
 
         System.out.println("Times of the Sorting Methods");
         System.out.println("*** 100 Element sorting times***");
         System.out.println("Insertion Sort "+insertionArray100.time);
         System.out.println("Selection Sort "+selectioArray100.time);
-        System.out.println("Merge Sort ");
-        System.out.println("Quick Sort ");
+        System.out.println("Merge Sort "+mergeArray100.time);
+        System.out.println("Quick Sort "+quickArray100.time);
 
         System.out.println("Times of the Sorting Methods");
         System.out.println("*** 200 Element sorting times***");
         System.out.println("Insertion Sort "+insertionArray200.time);
         System.out.println("Selection Sort "+selectioArray200.time);
-        System.out.println("Merge Sort ");
-        System.out.println("Quick Sort ");
+        System.out.println("Merge Sort "+mergeArray200.time);
+        System.out.println("Quick Sort "+quickArray200.time);
     }
 
 
@@ -134,11 +146,12 @@ class SortClass{
         int [] Mainarray;
         int size;
          long time;
-
+        int [] temparray;
         public SortClass(int array[],int size1){
                 size = size1;
             Mainarray= array.clone();
                 time  = 0;
+            temparray = new int[size1];
         }
 
     void insertionSort() {
@@ -212,7 +225,97 @@ class SortClass{
 
     //*** Merge sort and quick sort
 
+    private void mergesort(int lowerIndex, int higherIndex){
+        if (lowerIndex < higherIndex){
+            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+            // Below step sorts the left side of the array
+            mergesort(lowerIndex, middle);
+            // Below step sorts the right side of the array
+            mergesort(middle + 1, higherIndex);
+            // Now merge both sides
+            mergeParts(lowerIndex, middle, higherIndex);
+        }
+    }
 
+    void mergeParts(int lowerIndex, int middle, int higherIndex){
+        for (int i = lowerIndex; i <= higherIndex; i++){
+            temparray[i] = Mainarray[i];
+        }
+        int i = lowerIndex;
+        int j = middle + 1;
+        int k = lowerIndex;
+        while (i <= middle && j <= higherIndex){
+            if (temparray[i] <= temparray[j]){
+                Mainarray[k] = temparray[i];
+                i++;
+            }
+            else{
+                Mainarray[k] = temparray[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= middle){
+            Mainarray[k] = temparray[i];
+            k++;
+            i++;
+        }
+    }
+
+    void mergeSortandTimer(){
+        final long starttime = System.nanoTime();
+        mergesort(0,Mainarray.length-1);
+        final long endtime = System.nanoTime();
+        final long totaltime = (endtime - starttime);
+        System.out.println("**Merge Sort for Array with "+Mainarray.length+" elements **");
+        System.out.println("This is the start time = "+ starttime+" This is the end time = "+ endtime);
+        System.out.println("This is the time elapsed from start to finished = "+ totaltime);
+        time = totaltime;
+        print();
+    }
+
+    void quicksort(int lowerIndex, int higherIndex){
+        int i = lowerIndex;
+        int j = higherIndex;
+        // calculate pivot number, I am taking pivot as middle index number
+        int pivot = Mainarray[lowerIndex+(higherIndex-lowerIndex)/2];
+        // Divide into two arrays
+        while (i <= j){
+            while (Mainarray[i] < pivot){
+                i++;
+            }
+            while (Mainarray[j] > pivot){
+                j--;
+            }
+            if (i <= j){
+                exchangeNumbers(i, j);
+                i++;
+                j--;
+            }
+        }
+        if (lowerIndex < j)
+            quicksort(lowerIndex, j);
+        if (i < higherIndex)
+            quicksort(i, higherIndex);
+    }
+
+    private void exchangeNumbers(int i, int j){
+        int temp = Mainarray[i];
+        Mainarray[i] = Mainarray[j];
+        Mainarray[j] = temp;
+    }
+
+    void quickSortandTimer(){
+        final long starttime = System.nanoTime();
+        quicksort(0,Mainarray.length-1);
+        final long endtime = System.nanoTime();
+        final long totaltime = (endtime - starttime);
+        System.out.println("**Quick Sort for Array with "+Mainarray.length+" elements **");
+        System.out.println("This is the start time = "+ starttime+" This is the end time = "+ endtime);
+        System.out.println("This is the time elapsed from start to finished = "+ totaltime);
+        time = totaltime;
+        print();
+    }
 
 
 
