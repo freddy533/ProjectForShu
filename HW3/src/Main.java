@@ -1,13 +1,42 @@
 import java.util.Random;
 
 /**
- * Created by alchemist on 11/3/16.
+ * NAME: FREDDY CRIOLLO
+ * CLASS: COMPUTER ALGORITHMS
+ * INSTRUCTOR: DR. SHU
+ * FORDHAM UNIVERSITY
+ *
+ *
+ * Created by Freddy Criollo on 11/3/16.
+ * Final Project for Computer Algorithms R01
+ * Purpose: Sort 3 arrays with, 20, 100, 200 elements.
+ * Use three 4 Sorting Methods to Sort Each of the 3 arrays
+ * Get the time of the sorting method.
+ *
+ * How:
+ * I made a SortClass; Inside the class I am able to copy one of the original 3 arrays
+ * From there I made 4 different methods that sort and and get the time of the array that it cloned to the object.
+ * The method also prints out the sorted array and the time.
+ *
+ * The object of SortClass also has a time element that get the time that it took to sort the array;
+ * I used this time to print out the times at the end that it took to sort each array with each sorting methods
+ * This is useful to compare all the sorting methods.
+ *
+ * The times are in NanoSeconds.
+ *
+ * Software:
+ * I used the IntelliJ IDE Community Version, as my IDE to write compile and run my program.
+ * I used GITHUB as a version control,  to keep track of changes, I used a Laptop at school and a Desktop at home
+ *
+ *
  */
+
+//This it he main class that makes the original 3 array and run the SortCLass
 public class Main {
     public  static int[] Array20;
     public static int[] Array100;
     public static int[] Array200;
-
+//A random array generator
     public static int[] RandomArrayGenerator(int size){
         int array[];
         array = new int[size];
@@ -20,17 +49,18 @@ public class Main {
 
     public static void main(String args[]) {
 
-
+//Fills the 3 arrays with randoms numbers acording to size
         Array20 = RandomArrayGenerator(20);
         Array100 = RandomArrayGenerator(100);
         Array200 = RandomArrayGenerator(200);
+
+
+
         System.out.println(" ");
         System.out.println("--------------------20 ELEMENTS----------------------");
-
         //INSERTION SORT ARRAY 20
         System.out.println("THIS IS THE ARRAYS SORTED AND TIMES FOR THE ARRAY OF 20 ELEMENTS");
             //THIS IS THE INSERTION SORT OF THE 20 ELEMENT ARRAY
-
         SortClass insertionArray20 = new SortClass(Array20, 20);
         insertionArray20.insertionSortandTimer();
         System.out.println(" ");
@@ -40,18 +70,16 @@ public class Main {
         selectionArray20.selectionSortandTimer();
         System.out.println(" ");
         System.out.println(" ");
-
-
-
             //THIS IS THE MERGE SORT OF THE 20 ELEMENTS ARRAY
         SortClass mergeArray20 = new SortClass(Array20, 20);
         mergeArray20.mergeSortandTimer();
         System.out.println(" ");
         System.out.println(" ");
             //THIS IS THE QUICK SORT OF THE 20 ELEMENTS ARRAY
-        //**************************
         SortClass quickArray20 = new SortClass(Array20, 20);
         quickArray20.quickSortandTimer();
+
+
 
         System.out.println(" ");
         System.out.println("--------------------100 ELEMENTS----------------------");
@@ -67,8 +95,6 @@ public class Main {
         selectioArray100.selectionSortandTimer();
         System.out.println(" ");
         System.out.println(" ");
-
-
 
         //THIS IS THE MERGE SORT OF THE 100 ELEMENTS ARRAY
         SortClass mergeArray100 = new SortClass(Array100,100);
@@ -96,10 +122,6 @@ public class Main {
         selectioArray200.selectionSortandTimer();
         System.out.println(" ");
         System.out.println(" ");
-
-
-
-
         //THIS IS THE MERGE SORT OF THE 200 ELEMENTS ARRAY
         SortClass mergeArray200 = new SortClass(Array200,200);
         mergeArray200.mergeSortandTimer();
@@ -109,6 +131,11 @@ public class Main {
        SortClass quickArray200 = new SortClass(Array200,200);
         quickArray200.quickSortandTimer();
         System.out.println(" ");
+
+
+
+
+
         System.out.println("****************** ");
 
         //COMPARISON TIME
