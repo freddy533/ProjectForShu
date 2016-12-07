@@ -55,7 +55,7 @@ public class Main {
         Array200 = RandomArrayGenerator(200);
 
 
-
+//Sorts the Arrays and prints the arrays.
         System.out.println(" ");
         System.out.println("--------------------20 ELEMENTS----------------------");
         //INSERTION SORT ARRAY 20
@@ -134,31 +134,37 @@ public class Main {
 
 
 
-
+//Comparison Table.
 
         System.out.println("****************** ");
 
         //COMPARISON TIME
         System.out.println("Times of the Sorting Methods");
         System.out.println("*** 20 Element sorting times***");
-        System.out.println("Insertion Sort "+insertionArray20.time);
         System.out.println("Selection Sort "+selectionArray20.time);
+        System.out.println("Insertion Sort "+insertionArray20.time);
         System.out.println("Merge Sort "+mergeArray20.time);
         System.out.println("Quick Sort "+quickArray20.time);
 
         System.out.println("Times of the Sorting Methods");
         System.out.println("*** 100 Element sorting times***");
-        System.out.println("Insertion Sort "+insertionArray100.time);
         System.out.println("Selection Sort "+selectioArray100.time);
+        System.out.println("Insertion Sort "+insertionArray100.time);
         System.out.println("Merge Sort "+mergeArray100.time);
         System.out.println("Quick Sort "+quickArray100.time);
 
         System.out.println("Times of the Sorting Methods");
         System.out.println("*** 200 Element sorting times***");
-        System.out.println("Insertion Sort "+insertionArray200.time);
         System.out.println("Selection Sort "+selectioArray200.time);
+        System.out.println("Insertion Sort "+insertionArray200.time);
         System.out.println("Merge Sort "+mergeArray200.time);
         System.out.println("Quick Sort "+quickArray200.time);
+
+
+        System.out.println("Table for Times of Sorting Methods in Nano Seconds.");
+
+
+
     }
 
 
