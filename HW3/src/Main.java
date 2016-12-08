@@ -160,11 +160,14 @@ public class Main {
         System.out.println("Merge Sort "+mergeArray200.time);
         System.out.println("Quick Sort "+quickArray200.time);
 
-
+        System.out.println(" ");
+        System.out.println(" ");
         System.out.println("Table for Times of Sorting Methods in Nano Seconds.");
-
-
-
+        System.out.println("Array: |20 Elements|  |100 Elements|  |200 Elements|  ");
+        System.out.println("Times: |"+selectionArray20.time+"       |  |"+selectioArray100.time+"       |  |"+selectioArray200.time+"      |       ");
+        System.out.println("Times: |"+insertionArray20.time+"       |  |"+insertionArray100.time+"       |  |"+insertionArray200.time+"      |       ");
+        System.out.println("Times: |"+mergeArray20.time+"       |  |"+mergeArray100.time+"       |  |"+mergeArray200.time+"      |       ");
+        System.out.println("Times: |"+quickArray20.time+"       |  |"+quickArray100.time+"       |  |"+quickArray200.time+"       |       ");
     }
 
 
